@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Roboto%3Awght%40400%3B500%3B700&amp;family=Inter%3Awght%40400%3B500%3B700" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<title>KSEB New Connection</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+      :root {
+        --kseb-blue: #005f9e;
+        --kseb-green: #4caf50;
+        --kseb-white: #ffffff;
+        --kseb-light-gray: #f7f9fc;
+        --kseb-gray: #e8edf3;
+        --kseb-dark-gray: #6c757d;
+        --kseb-text: #333333;
+      }
+      body {
+        font-family: 'Roboto', 'Inter', sans-serif;
+      }
+      .wizard-step {
+        @apply flex items-center gap-3 relative;
+      }
+      .wizard-step-number {
+        @apply bg-[var(--kseb-gray)] text-[var(--kseb-dark-gray)] rounded-full size-8 flex items-center justify-center font-bold;
+      }
+      .wizard-step.active .wizard-step-number {
+        @apply bg-[var(--kseb-blue)] text-[var(--kseb-white)];
+      }
+      .wizard-step.completed .wizard-step-number {
+        @apply bg-[var(--kseb-green)] text-[var(--kseb-white)];
+      }
+      .wizard-step-label {
+        @apply text-[var(--kseb-dark-gray)] font-medium;
+      }
+      .wizard-step.active .wizard-step-label {
+        @apply text-[var(--kseb-text)] font-semibold;
+      }
+      .wizard-step.completed .wizard-step-label {
+        @apply text-[var(--kseb-text)];
+      }
+      .wizard-connector {
+        @apply w-px h-6 bg-[var(--kseb-gray)] absolute top-9 left-4;
+      }
+      .form-select {
+        @apply w-full h-12 px-4 bg-[var(--kseb-white)] border border-[var(--kseb-gray)] rounded-lg shadow-sm text-base text-[var(--kseb-text)] focus:ring-2 focus:ring-[var(--kseb-blue)] focus:border-[var(--kseb-blue)] appearance-none;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236c757d' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+        background-position: right 0.5rem center;
+        background-repeat: no-repeat;
+        background-size: 1.5em 1.5em;
+      }
+      .tooltip {
+        @apply absolute left-full ml-2 w-max bg-gray-800 text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none;
+      }
+    </style>
+</head>
+<body class="bg-[var(--kseb-light-gray)]">
+<div class="flex min-h-screen flex-col">
+<header class="bg-[var(--kseb-white)] shadow-md sticky top-0 z-50">
+<nav class="container mx-auto flex items-center justify-between px-6 py-3">
+<div class="flex items-center gap-3">
+<img alt="KSEB Logo" class="h-12 w-12" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlvcs2E4jeaUpgyB7_62qeCmXB93Ry23NM6grIGhkrHHSmd55YrD3UAO5iVi3_QhwNoxESbRNRiR2_7dUiNKf1ctxezSAAhl-G5H4SVRmDujdfnXht9kBA5pYWY1mj-Erzui--aBIhWunbfU9KXFqTfry2SE147UEHCq4IoZtmVXjbCpx2wKlxsPUKODqODmslsyO2f1DQGZAkH6tBp8XGbNPxnXUt84aJ68vAvo18U_mnvDL8O1F-kStwTMFovMfWqLlx7iN97IPq"/>
+<h1 class="text-xl font-bold text-[var(--kseb-blue)]">Kerala State Electricity Board</h1>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-gray-600 hover:text-[var(--kseb-blue)] font-medium" href="#">Home</a>
+<a class="text-gray-600 hover:text-[var(--kseb-blue)] font-medium" href="#">Services</a>
+<a class="text-gray-600 hover:text-[var(--kseb-blue)] font-medium" href="#">Billing</a>
+<a class="text-gray-600 hover:text-[var(--kseb-blue)] font-medium" href="#">Contact Us</a>
+<button class="flex items-center justify-center rounded-full bg-[var(--kseb-blue)] text-white size-10 shadow-sm">
+<span class="material-symbols-outlined">person</span>
+</button>
+</div>
+</nav>
+</header>
+<main class="container mx-auto flex-grow px-6 py-10">
+<div class="flex flex-col md:flex-row gap-12">
+<aside class="w-full md:w-1/3 lg:w-1/4">
+<div class="bg-[var(--kseb-white)] p-6 rounded-xl shadow-lg">
+<h2 class="text-lg font-semibold mb-6 text-[var(--kseb-text)]">Application Steps</h2>
+<div class="flex flex-col gap-4">
+<div class="wizard-step active">
+<div class="wizard-connector"></div>
+<div class="wizard-step-number">1</div>
+<p class="wizard-step-label">Location &amp; Type</p>
+</div>
+<div class="wizard-step">
+<div class="wizard-connector"></div>
+<div class="wizard-step-number">2</div>
+<p class="wizard-step-label">Applicant Details</p>
+</div>
+<div class="wizard-step">
+<div class="wizard-connector"></div>
+<div class="wizard-step-number">3</div>
+<p class="wizard-step-label">Documents Upload</p>
+</div>
+<div class="wizard-step">
+<div class="wizard-step-number">4</div>
+<p class="wizard-step-label">Review &amp; Submit</p>
+</div>
+</div>
+</div>
+</aside>
+<div class="w-full md:w-2/3 lg:w-3/4">
+<div class="bg-[var(--kseb-white)] p-8 rounded-xl shadow-lg">
+<div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-8">
+<div>
+<h2 class="text-2xl font-bold text-[var(--kseb-text)]">New Connection Application</h2>
+<p class="text-gray-500 mt-1">Step 1: Select your location and connection type.</p>
+</div>
+<img alt="Flat style illustration of a power line and a house" class="h-32 w-auto hidden md:block" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgl95KtcwLW_WxsdcxmNKlAqnrGPYYlCpKfPRu5ujSDmAuZGyfrpW0XnjmKuwc2IRil7U9UAEhd3yiHV8C5qlO8gV84CZb-sP2RXuaz9qG7TRVX79MPTqOn80hSooxTixMXLt00PXtpyyRUyeFq1NvTZ_vZ0zZvyG9ufzLt7MKds4W74MN3-JxXR5-xyxz3GZlWNllYrokC3H7WjerZpcFre-JzKP0wdHeyz147gWvnL7pHV1iIcFoi_Fk3FYpRfg-E0QbXFMd_hAp"/>
+</div>
+<form class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="flex items-center text-base font-medium text-[var(--kseb-text)] pb-2" for="district">
+                      District
+                      <div class="group relative ml-2">
+<span class="material-symbols-outlined text-gray-400 cursor-pointer text-base">help_outline</span>
+<span class="tooltip">Select the district where the connection is required.</span>
+</div>
+</label>
+<select class="form-select" id="district" name="district">
+<option disabled="" selected="">Choose your district</option>
+<option value="Trivandrum">Trivandrum</option>
+<option value="Kollam">Kollam</option>
+<option value="Pathanamthitta">Pathanamthitta</option>
+<option value="Alappuzha">Alappuzha</option>
+<option value="Kottayam">Kottayam</option>
+<option value="Idukki">Idukki</option>
+<option value="Ernakulam">Ernakulam</option>
+<option value="Thrissur">Thrissur</option>
+<option value="Palakkad">Palakkad</option>
+<option value="Malappuram">Malappuram</option>
+<option value="Kozhikode">Kozhikode</option>
+<option value="Wayanad">Wayanad</option>
+<option value="Kannur">Kannur</option>
+<option value="Kasaragod">Kasaragod</option>
+</select>
+</div>
+<div>
+<label class="flex items-center text-base font-medium text-[var(--kseb-text)] pb-2" for="local-body">
+                      Municipality/Corporation
+                       <div class="group relative ml-2">
+<span class="material-symbols-outlined text-gray-400 cursor-pointer text-base">help_outline</span>
+<span class="tooltip">Select your local governing body.</span>
+</div>
+</label>
+<select class="form-select" id="local-body" name="local-body">
+<option disabled="" selected="">Choose your local body</option>
+</select>
+</div>
+</div>
+<div>
+<label class="flex items-center text-base font-medium text-[var(--kseb-text)] pb-2" for="section-office">
+                    Section Office
+                     <div class="group relative ml-2">
+<span class="material-symbols-outlined text-gray-400 cursor-pointer text-base">help_outline</span>
+<span class="tooltip">The KSEB office that services your area.</span>
+</div>
+</label>
+<select class="form-select" id="section-office" name="section-office">
+<option disabled="" selected="">Choose your section office</option>
+</select>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="flex items-center text-base font-medium text-[var(--kseb-text)] pb-2" for="tariff">
+                      Tariff
+                       <div class="group relative ml-2">
+<span class="material-symbols-outlined text-gray-400 cursor-pointer text-base">help_outline</span>
+<span class="tooltip">Determines the rate at which you are charged.</span>
+</div>
+</label>
+<select class="form-select" id="tariff" name="tariff">
+<option disabled="" selected="">Choose your tariff</option>
+<option value="lt1a">LT-1A (Domestic)</option>
+<option value="lt7a">LT-7A (Commercial)</option>
+<option value="lt4a">LT-4A (Industrial)</option>
+</select>
+</div>
+<div>
+<label class="flex items-center text-base font-medium text-[var(--kseb-text)] pb-2" for="category">
+                      Connection Category
+                       <div class="group relative ml-2">
+<span class="material-symbols-outlined text-gray-400 cursor-pointer text-base">help_outline</span>
+<span class="tooltip">Specify the purpose of the connection.</span>
+</div>
+</label>
+<select class="form-select" id="category" name="category">
+<option disabled="" selected="">Choose your category</option>
+<option value="new">New Connection</option>
+<option value="temporary">Temporary Connection</option>
+<option value="load-change">Load Change</option>
+</select>
+</div>
+</div>
+<div class="flex justify-end pt-4">
+<button class="flex items-center justify-center gap-2 h-12 px-8 bg-[var(--kseb-blue)] text-[var(--kseb-white)] text-base font-bold rounded-lg shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-all" type="submit">
+<span>Next: Applicant Details</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</main>
+<footer class="bg-[var(--kseb-white)] mt-12 py-6 border-t border-[var(--kseb-gray)]">
+<div class="container mx-auto text-center text-gray-500">
+<p>© 2024 Kerala State Electricity Board Ltd. All Rights Reserved.</p>
+</div>
+</footer>
+</div>
+
+</body></html>
